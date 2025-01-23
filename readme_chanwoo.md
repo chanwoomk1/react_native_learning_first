@@ -19,5 +19,9 @@ bash
 복사
 npx expo start
 
+npx expo install react-dom
+
+npm run web
+
 Expo는 로컬 개발 서버를 실행하고 QR 코드를 제공합니다.
 QR 코드를 스캔하면 Expo Go 앱에서 프로젝트를 실행할 수 있습니다.
