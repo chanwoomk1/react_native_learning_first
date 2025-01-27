@@ -49,6 +49,7 @@ const ProfileScreen = ({navigation}) =>{
 
 const App = () => {
   return (
+    <>
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Home"
@@ -64,10 +65,10 @@ const App = () => {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
-      
-      {/* <BottomNavigationBar  navigate_list={["HomeScreen","ProfileScreen"]}/> */}
-      </NavigationContainer>
-  );
+      <BottomNavigationBar navigate_list={["Home","Profile"]}/>
+    </NavigationContainer>
+    </>
+    );
 };
 
 const styles = StyleSheet.create({
