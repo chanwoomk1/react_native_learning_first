@@ -1,20 +1,74 @@
-import React, {Component,useState} from 'react';
-import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+//react
+import {React,useState} from 'react';
+//navigation 
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { CardStyleInterpolators } from '@react-navigation/stack';
+//react_native core comp
+import { View, Text, Button, StyleSheet } from 'react-native';
+//src/comp
+import BottomNavigationBar from './src/components/navigation_bar/bottom_navigation_bar';
 
-const App = ()=>{
-  const [count,setCount] = useState(0);
+const Stack = createNativeStackNavigator();
+
+const HomeScreen = ({ navigation }) => {
+  const [cnt,setCnt]=useState(0)
   return (
-    <>
-    <View style={styles.container}>
-
-      <TouchableOpacity style={styles.button} onPress={()=>setCount(count+1)}>
-        <Text>this button clicked {count}</Text>
-      </TouchableOpacity>
-      <Text>1</Text>
-    </View>
-    </>
+  <View style={styles.container}>
+    <Text>Home Screen</Text>
+    <Button
+      title="Go to Profile"
+      onPress={() => navigation.replace('Profile')}
+    />
+    <Button
+      title={`cnt ${cnt}`}
+      onPress={() => setCnt(cnt+1)}
+    />
+  </View>
   );
 }
+
+const ProfileScreen = ({navigation}) =>{
+  const [cnt,setCnt]=useState(0)
+
+  return  (
+    <View style={styles.container}>
+      <Text>Profile Screen</Text>
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.replace('Home')}
+      />
+      <Button
+        title={`cnt ${cnt}`}
+        onPress={() => setCnt(cnt+1)}
+      />
+    </View>
+  );
+}
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Home"
+          screenOptions={{
+            //gestureEnabled: true, // 제스처로 화면 전환을 활성화
+            //gestureDirection: 'horizontal', // 제스처 방향을 수평으로 설정
+            //cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS, // 수평 슬라이드 애니메이션 설정
+            // mobile 환경에서만 작동
+
+            headerShown: false,
+          }}
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+      </Stack.Navigator>
+      
+      {/* <BottomNavigationBar  navigate_list={["HomeScreen","ProfileScreen"]}/> */}
+      </NavigationContainer>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -22,11 +76,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  button: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10,
-    marginBottom: 10,
-  },
 });
+
 export default App;
