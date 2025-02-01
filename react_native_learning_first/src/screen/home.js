@@ -2,11 +2,13 @@
 import {React,useState} from 'react';
 //react_native core comp
 import { View, Text, Button, StyleSheet } from 'react-native';
-import { useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = () => {
+    const navigation=useNavigation()
     const [cnt,setCnt]=useState(0)
+
     return (
     <View >
     <Text>Home Screen</Text>

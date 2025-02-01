@@ -5,7 +5,8 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import { useNavigation} from '@react-navigation/native';
 
 
-const ProfileScreen = ({navigation}) =>{
+const ProfileScreen = () =>{
+    const navigation=useNavigation()
     const [cnt,setCnt]=useState(0)
   
     return  (
