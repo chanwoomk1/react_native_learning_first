@@ -1,7 +1,6 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button} from 'react-native';
 import {
-  createStaticNavigation,
   useNavigation,
 } from '@react-navigation/native';
 
@@ -10,10 +9,10 @@ const BottomNavigationBar=({navigate_list})=>{
     return(
     <>
         <View>
-            {navigate_list.map((item,idx)=>
-                <Button key={idx} title={` ${item} go`} 
+            {navigate_list.map((item)=>
+                <Button key={item} title={` ${item} go`} 
                     onPress={()=>{
-                        navigation.navigate(item)
+                        navigation.replace(item)
                     }
                 }/>
             )}

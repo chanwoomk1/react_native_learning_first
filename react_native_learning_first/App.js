@@ -11,14 +11,15 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import BottomNavigationBar from './src/components/navigation_bar/bottom_navigation_bar';
 import HomeScreen from './src/screen/home';
 import ProfileScreen from './src/screen/profile';
+
+import { styles } from './src/styles/stylesheet';
 const Stack = createNativeStackNavigator();
 
 
 
 const App = () => {
   return (
-    <>
-    <NavigationContainer>
+    <NavigationContainer style={styles.fullScreenStyle}>
       <Stack.Navigator
         initialRouteName="Home"
           screenOptions={{
@@ -30,12 +31,14 @@ const App = () => {
             headerShown: false,
           }}
       >
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen 
+          style={styles.fullScreenStyle}
+          name="Home" component={HomeScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
-      <BottomNavigationBar navigate_list={["Home","Profile"]}/>
+      <BottomNavigationBar style={styles.navigationBar}
+        navigate_list={["Home","Profile"]}/>
     </NavigationContainer>
-    </>
     );
 };
 
