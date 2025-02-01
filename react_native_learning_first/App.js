@@ -9,43 +9,11 @@ import { CardStyleInterpolators } from '@react-navigation/stack';
 import { View, Text, Button, StyleSheet } from 'react-native';
 //src/comp
 import BottomNavigationBar from './src/components/navigation_bar/bottom_navigation_bar';
-
+import HomeScreen from './src/screen/home';
+import ProfileScreen from './src/screen/profile';
 const Stack = createNativeStackNavigator();
 
-const HomeScreen = ({ navigation }) => {
-  const [cnt,setCnt]=useState(0)
-  return (
-  <View style={styles.container}>
-    <Text>Home Screen</Text>
-    <Button
-      title="Go to Profile"
-      onPress={() => navigation.replace('Profile')}
-    />
-    <Button
-      title={`cnt ${cnt}`}
-      onPress={() => setCnt(cnt+1)}
-    />
-  </View>
-  );
-}
 
-const ProfileScreen = ({navigation}) =>{
-  const [cnt,setCnt]=useState(0)
-
-  return  (
-    <View style={styles.container}>
-      <Text>Profile Screen</Text>
-      <Button
-        title="Go to Home"
-        onPress={() => navigation.replace('Home')}
-      />
-      <Button
-        title={`cnt ${cnt}`}
-        onPress={() => setCnt(cnt+1)}
-      />
-    </View>
-  );
-}
 
 const App = () => {
   return (
@@ -71,12 +39,5 @@ const App = () => {
     );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default App;
