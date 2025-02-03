@@ -19,25 +19,25 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer style={styles.fullScreenStyle}>
-      <Stack.Navigator
-        initialRouteName="Home"
-          screenOptions={{
-            //gestureEnabled: true, // 제스처로 화면 전환을 활성화
-            //gestureDirection: 'horizontal', // 제스처 방향을 수평으로 설정
-            //cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS, // 수평 슬라이드 애니메이션 설정
-            // mobile 환경에서만 작동
+    <NavigationContainer >
+      <View >
+        <Stack.Navigator
+          initialRouteName="Home"
+            screenOptions={{
+              //gestureEnabled: true, // 제스처로 화면 전환을 활성화
+              //gestureDirection: 'horizontal', // 제스처 방향을 수평으로 설정
+              //cardStyleInterpolator: CardStyleInterpolatoras.forHorizontalIOS, // 수평 슬라이드 애니메이션 설정
+              // mobile 환경에서만 작동
 
-            headerShown: false,
-          }}
-      >
-        <Stack.Screen 
-          style={styles.fullScreenStyle}
-          name="Home" component={HomeScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-      </Stack.Navigator>
-      <BottomNavigationBar style={styles.navigationBar}
-        navigate_list={["Home","Profile"]}/>
+              headerShown: false,
+            }}
+        >
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Profile" component={ProfileScreen} />
+        </Stack.Navigator>
+        <BottomNavigationBar
+           navigate_list={["Home","Profile"]}/>
+      </View>
     </NavigationContainer>
     );
 };
